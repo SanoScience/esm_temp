@@ -1,0 +1,16 @@
+name: esm_env
+channels:
+  - pytorch
+  - defaults
+  - conda-forge
+  - salilab
+dependencies:
+  - python=3.9
+  - pytorch
+  - torchvision
+  - torchaudio
+  - cudatoolkit
+  - pandas
+  - wandb
+  - fair-esm
+  - pyarrow
