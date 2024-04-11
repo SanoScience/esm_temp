@@ -70,12 +70,12 @@ If you wish to incorporate WandB for experiment tracking, you can add the follow
 python run_training.py --train_csv_file "data/example_files/train_1.csv" --val_csv_file "data/example_files/val_1.csv" --use_wandb
 ```
 
-## Generate row ESM2 embedding
+## Generate raw ESM2 embedding
 
-To generate ESM2 embeddings from the 650M model, utilize the generate_row_embedding.py script as follows:
+To generate ESM2 embeddings from the 650M model, utilize the generate_raw_embedding.py script as follows:
 
 ```bash
-python generate_row_embedding.py --model_size "big" --dataset_path "data/example_files/val_1.csv" --path_embedding_file "val_1_embeddings.csv"
+python generate_raw_embedding.py --model_size "big" --dataset_path "data/example_files/val_1.csv" --path_embedding_file "val_1_embeddings.csv"
 ```
 
 Ensure that the CSV input file follows the same format as mentioned above. The path_embedding_file should have a CSV file extension. Subsequently, use this generated file as an input file for training.
