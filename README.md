@@ -1,21 +1,20 @@
 ## What is EsmTemp?
 
-EsmTemp is a repository leveraging the ESM-2 protein model for fine-tuning, aimed at improving results in melting temperature prediction. The repository utilizes the ESM-2 model, accessible [here](https://github.com/facebookresearch/esm), as a basis for fine-tuning processes. The objective is to enhance the accuracy of predictions related to melting temperatures in protein structures.
+EsmTemp is a repository that utilizes the ESM-2 protein model for fine-tuning, with the purpose of enhancing outcomes in the prediction of protein melting temperature (Tm). The repository utilizes the ESM-2 model, accessible [here](https://github.com/facebookresearch/esm), as a basis for fine-tuning processes. The objective is to enhance the accuracy of predictions related to melting temperatures in protein structures. The major goal of this project is to improve the precision of Tm predictions to support biotechnological projects aimed at developing thermostable proteins.
 
-In transfer learning with protein language models, the embeddings extracted from these latent spaces serve as powerful features for downstream tasks. By leveraging the pre-trained knowledge encoded within the embeddings, this approach allows us to fine-tune the model for predicting the melting temperatures of proteins.
+In the context of transfer learning utilizing protein language models (pLM), the extracted embeddings from these latent spaces serve as highly effective features for subsequent tasks. By leveraging the pre-trained knowledge encoded within the embeddings, this approach allows us to fine-tune the model for use in related tasks, in this case predicting the Tm of proteins.
 
 ![Alt text](figures/conception.png)
 
 ## Data
 
-The dataset was compiled by integrating data from two sources of protein thermostability information: ProThermDB and Meltome Atlas.
-Tm of proteins was achieved by only keeping measurements conducted on cell lysates. The dataset was refined by removing protein sequences exhibiting Tm values outside the range of 30°C to 98°C, as well as sequences with lengths below 100 or exceeding 900 amino acids, to maintain a focus on proteins of relevant stability and size for accurate modeling. Duplicate entries were identified and eliminated, and the remaining sequences were clustered to further reduce redundancy with the CD-HIT algorithm, applying a sequence similarity threshold of 0.7 and a minimum cluster size of 3, while all other parameters were left at their default settings. This process resulted in a curated dataset consisting of 24,472 unique amino acid sequences, each annotated with its corresponding source organism and Tm value.
+The dataset was compiled by integrating data from two sources of protein thermostability information: ProThermDB and Meltome Atlas. We utilized data from Tm protein assays performed on cell lysates. The dataset underwent a refinement process that involved the removal of protein sequences with Tm values outside the range of 30°C to 98°C. In order to ensure accurate protein modeling based on the most representative data, sequences that were below 100 or above 900 amino acids in length were excluded. Our approach involved removing duplicate entries and then clustering the remaining sequences using the CD-HIT algorithm to ensure that the training and test sets do not have identical or near identical examples. To minimize redundancy, we set a sequence similarity threshold of 0.7 and a minimum cluster size of 3, while keeping all other parameters at their default values. As a result of this process, we obtained a curated dataset comprising 24,472 distinct amino acid sequences. Each sequence is accompanied by its respective source organism and Tm value.
 
 The distributions of temperature and protein sequence lengths within the dataset are illustrated below.
 
 ![Alt text](figures/distribution.png)
 
-In the paper, we also emphasize fine-tuning the model exclusively for proteins from specific organisms, particularly the most frequently occurring ones. The figure below visually illustrates the distribution of melting temperatures for individual proteins originating from the four most common organisms in the curated training set. Histogram depicting the distribution of melting temperatures (Tm) across a protein sequence dataset from various organisms’ lysates: Human (A), Arabidopsis thaliana seedling (B), Caenorhabditis elegans (C), Mus musculus BMDC (D)
+Moreover, our analysis in the paper delves into the effects of exclusively fine-tuning the model for proteins from specific organisms, specifically focusing on the most frequently occurring ones in the dataset. The figure below provides a visual representation of the Tm distribution for proteins from the four most common organisms' lysates in the curated training set: Human (A), Arabidopsis thaliana seedling (B), Caenorhabditis elegans (C), Mus musculus BMDC (D).
 
 ![Alt text](figures/tm_distribution.png)
 
@@ -47,10 +46,6 @@ or alternatively, use an environment.yml file:
 conda env create -f environment.yml
 conda activate esm_env
 ```
-
-## How to speed up training by using esm from github?
-
-Opting to download the model directly from the [GitHub repository](https://github.com/facebookresearch/esm) can expedite the fine-tuning process, reducing the time required for model fine-tune.
 
 ## How input file should looks like?
 
