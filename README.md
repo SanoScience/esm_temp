@@ -28,6 +28,8 @@ Figures below shows the correlation analysis depicts the relationship between me
 
 ![Alt text](figures/results_all.png)
 
+Models available from the authors upon request.
+
 ## How to create conda environment?
 
 ```bash
